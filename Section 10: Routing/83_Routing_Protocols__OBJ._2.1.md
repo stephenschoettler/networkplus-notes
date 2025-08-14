@@ -1,0 +1,62 @@
+## 💡 Routing Protocols (OBJ 2.1)
+
+- Dynamic routing protocols allow routers to automatically learn and share routing information.
+- They are categorized into Internal Gateway Protocols (IGP), which operate *within* an autonomous system.
+- They are also categorized into External Gateway Protocols (EGP), which operate *between* autonomous systems.
+
+✅ **Dynamic Routing Protocol Types**
+- **Distance Vector:**
+  - Routers send a full copy of their routing table to directly connected neighbors at regular intervals.
+  - Metric: Primarily **hop count** (number of routers to pass through).
+  - Characterized by **slow convergence time** (time for all routers to update their tables after a topology change).
+  - Can use **hold-down timers** to improve convergence by reducing update frequency.
+- **Link State:**
+  - Routers build a complete map of the network topology.
+  - Metric: **Cost**, often based on **link speed/bandwidth**.
+  - Characterized by **faster convergence time** than distance vector protocols.
+  - Requires all routers to know about all paths and other routers.
+- **Hybrid:** Combines aspects of both distance vector and link state.
+- **Path Vector:** Used by EGPs, focuses on autonomous system hops rather than router hops.
+
+✅ **Specific Routing Protocols**
+- **1. RIP (Routing Information Protocol)**
+  - **Type:** IGP
+  - **Algorithm:** Distance Vector
+  - **Metric:** Hop count
+  - **Key Features:**
+    - Oldest dynamic routing protocol.
+    - Maximum 15 hops (16+ hops considered unreachable).
+    - Updates every 30 seconds, leading to slow convergence.
+    - Easy to configure.
+    - Uses UDP for updates (fire-and-forget).
+- **2. OSPF (Open Shortest Path First)**
+  - **Type:** IGP
+  - **Algorithm:** Link State
+  - **Metric:** Cost (based on link speed/bandwidth)
+  - **Key Features:**
+    - Very popular and widely used.
+    - Faster convergence than RIP.
+    - Routers build a synchronized view of the network.
+- **3. IS-IS (Intermediate System to Intermediate System)**
+  - **Type:** IGP
+  - **Algorithm:** Link State
+  - **Metric:** Cost (based on link speed/bandwidth)
+  - **Key Features:**
+    - Functions similarly to OSPF but less widely adopted.
+- **4. EIGRP (Enhanced Interior Gateway Routing Protocol)**
+  - **Type:** IGP
+  - **Algorithm:** Advanced Distance Vector (Hybrid)
+  - **Metric:** Bandwidth and Delay
+  - **Key Features:**
+    - Developed by Cisco (proprietary).
+    - Popular in Cisco-only networks.
+    - Combines benefits of distance vector and link state.
+- **5. BGP (Border Gateway Protocol)**
+  - **Type:** EGP
+  - **Algorithm:** Path Vector
+  - **Metric:** Autonomous System (AS) hops
+  - **Key Features:**
+    - The backbone of the internet.
+    - Used for routing between different ISPs and large networks.
+    - Focuses on AS paths rather than individual router hops.
+    - Can have slow convergence due to its large scale.
